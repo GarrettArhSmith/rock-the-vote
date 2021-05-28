@@ -5,11 +5,18 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const expressJwt = require('express-jwt')
 
+const path = require("path")
+
+const port = process.env.PORT || 9000
+const secret = process.env.SECRET || "garrett smith web developer"
+
+
 app.use(express.json())
 app.use(morgan('dev'))
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 mongoose.connect(
-    'mongodb://localhost:27017/rock-the-vote',
+    process.env.MONGODB_URI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -20,7 +27,7 @@ mongoose.connect(
 )
 
 app.use("/auth", require('./routes/authRouter'))
-app.use("/api", expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
+app.use("/api", expressJwt({ secret: secret, algorithms: ['HS256'] }))
 app.use("/api/issue", require('./routes/issueRouter'))
 app.use("/api/comment", require('./routes/commentRouter'))
 app.use("/api/vote", require('./routes/voteRouter'))
@@ -33,6 +40,10 @@ app.use((err, req, res, next) => {
     return res.send({ errMsg: err.message })
 })
 
-app.listen(9000, () => {
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+app.listen(port, () => {
     console.log("The server is running on Port 9000")
 })

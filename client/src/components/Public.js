@@ -16,7 +16,7 @@ function Public(props) {
     return (
         <div className="content">
             <h1>Home</h1>
-            <h3>Hi, {username[0].toUpperCase() + username.substring(1)}!</h3>
+            {username && <h3>Hi, {username[0].toUpperCase() + username.substring(1)}!</h3>}
             <IssueForm type="issue" />
             <div className="issueList">
                 {[...allIssues].reverse().map(issue => {
