@@ -44,6 +44,6 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 9000, () => {
     console.log("The server is running on Port 9000")
 })
