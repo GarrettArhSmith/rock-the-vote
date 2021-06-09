@@ -11,14 +11,14 @@ function AuthForm(props) {
                 <input 
                     type="text" 
                     name="username"
-                    value={inputs.username}
+                    value={inputs?.username}
                     onChange={handleChange}
                 />
                 <label htmlFor="password">Password</label>
                 <input 
                     type="password" 
                     name="password"
-                    value={inputs.password}
+                    value={inputs?.password}
                     onChange={handleChange}
                 />
                 <p style={{color: "red", minHeight: 18, marginTop: 0}}>{errMsg}</p>

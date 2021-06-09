@@ -54,6 +54,7 @@ function Auth(props) {
             >
                 {toggle ? "Already a member?" : "Not a member?"}
             </p>
+            <p style={{color: '#eee'}}>Use username: "guest" and password: "123" to try it out.</p>
         </div>
     );
 }

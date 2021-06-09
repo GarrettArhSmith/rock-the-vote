@@ -10,7 +10,6 @@ function Public(props) {
 
     useEffect (() => {
         getAllIssues()
-        console.log("USE EFFECT RAN!")
     }, [])
 
     return (
