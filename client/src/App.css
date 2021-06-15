@@ -110,10 +110,14 @@ button:hover {
     grid-template-columns: 1fr 15fr;
     grid-template-rows: auto;
     overflow: hidden;
+    transition: 0.5s ease;
 }
 .issue:hover {
     border: 1px solid #999999;
     cursor: pointer;
+    box-shadow: 0 0 5px 0px rgba(0,0,0,0.1);
+    /* transform: scale(1.01); */
+    transform: translateY(-5px) scale(1.005);
 }
 .issueContent {
     text-align: left;
